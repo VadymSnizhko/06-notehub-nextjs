@@ -1,0 +1,60 @@
+import axios from 'axios';
+//import { useMutation } from '@tanstack/react-query';
+import {type Note, type CreateNote} from '../types/node'
+
+const BASE_URL = 'https://notehub-public.goit.study/api/notes';
+
+interface FetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
+
+interface FetchNotesParams {
+  page: number;
+  search: string;
+}
+//https://notehub-public.goit.study/api/notes?tag=Todo&page=1&perPage=10&sortBy=created
+export const fetchNotes = async ({
+  page,
+  search,
+}: FetchNotesParams): Promise<FetchNotesResponse> => {
+  const response = await axios.get<FetchNotesResponse>(BASE_URL, {
+    params: {
+      page,
+      perPage: 12,
+      search,
+    },
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const createNote = async (
+  newNote: CreateNote
+): Promise<Note> => {
+  const response = await axios.post<Note>(BASE_URL, newNote, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const deleteNote = async (
+  noteId: string
+): Promise<Note> => {
+  const response = await axios.delete<Note>(
+    `${BASE_URL}/${noteId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+      },
+    }
+  );
+
+  return response.data;
+};
