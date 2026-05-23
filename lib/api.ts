@@ -1,18 +1,18 @@
 import axios from 'axios';
 //import { useMutation } from '@tanstack/react-query';
-import {type Note, type CreateNote} from '../types/node'
+import {type Note, type CreateNote, type FetchNotesParams, type FetchNotesResponse} from '../types/node'
 
 const BASE_URL = 'https://notehub-public.goit.study/api/notes';
 
-interface FetchNotesResponse {
-  notes: Note[];
-  totalPages: number;
+export const getNote = async () => {
+  const {data} = await axios.get<FetchNotesResponse>(BASE_URL, {
+   headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+  })
+  return data
 }
 
-interface FetchNotesParams {
-  page: number;
-  search: string;
-}
 //https://notehub-public.goit.study/api/notes?tag=Todo&page=1&perPage=10&sortBy=created
 export const fetchNotes = async ({
   page,
