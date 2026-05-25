@@ -30,3 +30,8 @@ export interface FetchNotesParams {
   page: number;
   search: string;
 }
+
+export interface SearchBoxProps {
+  value: string;
+  onChange: (value: string) => void;
+}
