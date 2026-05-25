@@ -3,6 +3,7 @@ import css from "./NoteLisr.module.css"
 import cssSearch from "./SearchBox.module.css"
 import cssPage from "./NotesPage.module.css"
 import { fetchNotes, getNote } from "@/lib/api"
+import Link from "next/link"
 //import type {DebouncedState } from "use-debounce";
 //import {type SearchBoxProps} from "../../types/node"
 
@@ -45,7 +46,9 @@ const NoteList = async () => {
         <ul className={css.list}>
          {res?.notes.map(note => (
             <li className={css.listItem} key={note.id}>
-                <h2 className={css.title}>{note.title}</h2>
+                <Link href={`/notes/${note.id}`}>
+                    <h2 className={css.title}>{note.title}</h2>
+                </Link>
                 <p className={css.content}>{note.content}</p>
                 <div className={css.footer}>
                     <span className={css.tag}>{note.tag}</span>

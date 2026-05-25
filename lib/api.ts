@@ -58,3 +58,9 @@ export const deleteNote = async (
 
   return response.data;
 };
+
+
+export const getNoteItem = async (id:string) => {
+ const {data} = await axios.get<Note>(`/notes/${id}`)
+ return data
+}
