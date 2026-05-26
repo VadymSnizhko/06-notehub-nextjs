@@ -1,6 +1,6 @@
 import axios from 'axios';
 //import { useMutation } from '@tanstack/react-query';
-import {type Note, type CreateNote, type FetchNotesParams, type FetchNotesResponse} from '../types/node'
+import {type Note, type CreateNote, type FetchNotesParams, type FetchNotesResponse} from '../types/note'
 
 const BASE_URL = 'https://notehub-public.goit.study/api/notes';
 
