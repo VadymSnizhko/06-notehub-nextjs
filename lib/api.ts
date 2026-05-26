@@ -59,8 +59,13 @@ export const deleteNote = async (
   return response.data;
 };
 
+//axios.defaults.baseURL = 'https://notehub-public.goit.study/api/notes'
 
 export const getNoteItem = async (id:string) => {
- const {data} = await axios.get<Note>(`/notes/${id}`)
+ const {data} = await axios.get<Note>(`${BASE_URL}/${id}`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`,
+    },
+  })
  return data
 }
