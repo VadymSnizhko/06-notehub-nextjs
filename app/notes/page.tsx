@@ -1,6 +1,6 @@
 //import { ChangeEvent, useState } from "react";
-import css from "./NoteList.module.css"
-import cssSearch from "./SearchBox.module.css"
+import css from "../../components/NoteList/NoteList.module.css"
+import cssSearch from "../../components/SearchBox/SearchBox.module.css"
 import cssPage from "./NotesPage.module.css"
 import { fetchNotes, getNote } from "@/lib/api"
 import Link from "next/link"
