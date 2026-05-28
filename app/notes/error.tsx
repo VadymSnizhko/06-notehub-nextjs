@@ -1,7 +1,9 @@
 'use client'
 
-import {ErrorPageProps} from "@/types/note"
-
+//import {ErrorPageProps} from "@/types/note"
+interface ErrorPageProps{
+    error:Error    
+}
 
 const ErrorMessage = ({error}:ErrorPageProps) => {
     return (
