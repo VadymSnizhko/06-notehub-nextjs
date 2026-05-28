@@ -31,7 +31,6 @@ export interface FetchNotesParams {
   search: string;
 }
 
-export interface SearchBoxProps {
-  value: string;
-  onChange: (value: string) => void;
+export interface ErrorPageProps{
+    error:Error    
 }

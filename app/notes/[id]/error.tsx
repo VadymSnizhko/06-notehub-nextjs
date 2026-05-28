@@ -5,10 +5,10 @@ interface ErrorPageProps{
     error:Error    
 }
 
-const errorMessage = ({error}:ErrorPageProps) => {
+const ErrorMessage = ({error}:ErrorPageProps) => {
   return <p style={{color:'red'}}>Could not fetch note details. {error.message}</p>
 }
 
-export default errorMessage
+export default ErrorMessage
 
 
