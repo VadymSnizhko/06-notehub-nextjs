@@ -1,9 +1,9 @@
 //import { ChangeEvent, useState } from "react";
-import css from "@/components/NoteList/NoteList.module.css"
+/*import css from "@/components/NoteList/NoteList.module.css"
 import cssSearch from "@/components/SearchBox/SearchBox.module.css"
 import cssPage from "./NotesPage.module.css"
 import { fetchNotes } from "@/lib/api"
-import Link from "next/link"
+import Link from "next/link"*/
 //import type {DebouncedState } from "use-debounce";
 //import {type SearchBoxProps} from "../../types/node"
 
@@ -24,7 +24,7 @@ interface SearchBoxProps {
     }  
 //}
 */
-
+/*
 const NoteList = async () => {
 
     const res = await fetchNotes({
@@ -64,4 +64,34 @@ const NoteList = async () => {
     </div>)
 }
 
-export default NoteList
+export default NoteList*/
+
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
+
+import NotesClient from "./Notes.client";
+import { fetchNotes } from "@/lib/api";
+
+const NotesPage = async () => {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["notes", 1, ""],
+    queryFn: () =>
+      fetchNotes({
+        page: 1,
+        search: "",
+      }),
+  });
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <NotesClient />
+    </HydrationBoundary>
+  );
+};
+
+export default NotesPage;
