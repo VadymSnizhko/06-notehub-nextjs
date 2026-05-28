@@ -2,7 +2,7 @@
 import css from "@/components/NoteList/NoteList.module.css"
 import cssSearch from "@/components/SearchBox/SearchBox.module.css"
 import cssPage from "./NotesPage.module.css"
-import { fetchNotes, getNote } from "@/lib/api"
+import { fetchNotes } from "@/lib/api"
 import Link from "next/link"
 //import type {DebouncedState } from "use-debounce";
 //import {type SearchBoxProps} from "../../types/node"
@@ -27,7 +27,9 @@ interface SearchBoxProps {
 
 const NoteList = async () => {
 
-    const res = await getNote()
+    const res = await fetchNotes({
+        page: 1,
+        })
     console.log(res);
 
     return  (

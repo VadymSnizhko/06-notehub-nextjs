@@ -9,7 +9,7 @@ interface FetchNotesResponse {
 
 interface FetchNotesParams {
   page: number;
-  search: string;
+  search?: string;
 }
 
 const BASE_URL = 'https://notehub-public.goit.study/api/notes';
