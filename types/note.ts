@@ -30,7 +30,3 @@ export interface FetchNotesParams {
   page: number;
   search: string;
 }
-
-export interface ErrorPageProps{
-    error:Error    
-}

@@ -1,9 +1,19 @@
 import axios from 'axios';
 //import { useMutation } from '@tanstack/react-query';
-import {type Note, type CreateNote, type FetchNotesParams, type FetchNotesResponse} from '../types/note'
+import {type Note, type CreateNote} from '../types/note'
+
+interface FetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
+
+interface FetchNotesParams {
+  page: number;
+  search: string;
+}
 
 const BASE_URL = 'https://notehub-public.goit.study/api/notes';
-
+/*
 export const getNote = async () => {
   const {data} = await axios.get<FetchNotesResponse>(BASE_URL, {
    headers: {
@@ -11,7 +21,7 @@ export const getNote = async () => {
     },
   })
   return data
-}
+}*/
 
 //https://notehub-public.goit.study/api/notes?tag=Todo&page=1&perPage=10&sortBy=created
 export const fetchNotes = async ({
