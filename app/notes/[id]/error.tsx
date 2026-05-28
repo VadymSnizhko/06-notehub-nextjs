@@ -1,8 +1,7 @@
 'use client'
 
-interface ErrorPageProps{
-    error:Error    
-}
+import {ErrorPageProps} from "@/types/note"
+
 
 const errorMessage = ({error}:ErrorPageProps) => {
   return <p style={{color:'red'}}>Could not fetch note details. {error.message}</p>
