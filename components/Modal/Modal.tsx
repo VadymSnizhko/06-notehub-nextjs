@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import css from './Modal.module.css'
 
 type ModalProps = {
   isOpen: boolean;
@@ -14,12 +15,15 @@ const Modal = ({
   if (!isOpen) return null;
 
   return (
-    <div>
+    <div className={css.backdrop}>
+    <div className={css.modal}>
       <button onClick={onClose}>
         Close
       </button>
 
       {children}
+    </div>
+
     </div>
   );
 };
