@@ -101,7 +101,11 @@ const useDebounce = (
           setIsModalOpen(false)
         }
       >
-        <NoteForm />
+        <NoteForm
+          onClose={() =>
+          setIsModalOpen(false)
+        }
+      />
       </Modal>
     </>
   )
