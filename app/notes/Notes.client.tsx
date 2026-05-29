@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query"
 
 import { fetchNotes } from "@/lib/api"
 
+import css from './NotesPage.module.css'
+
 import SearchBox from "@/components/SearchBox/SearchBox"
 import Pagination from "@/components/Pagination/Pagination"
 import Modal from "@/components/Modal/Modal"
@@ -70,13 +72,19 @@ const useDebounce = (
 
   return (
     <>
-      <div>
+      <div className={css.toolbar}>
         <SearchBox
           value={search}
           onChange={setSearch}
         />
 
-        <button
+      <Pagination
+        currentPage={page}
+        totalPages={data?.totalPages ?? 1}
+        onPageChange={setPage}
+      />
+
+        <button className={css.button}
           onClick={() => setIsModalOpen(true)}
         >
           Create note +
@@ -85,11 +93,7 @@ const useDebounce = (
 
       <NoteList notes={data?.notes ?? []} />
 
-      <Pagination
-        currentPage={page}
-        totalPages={data?.totalPages ?? 1}
-        onPageChange={setPage}
-      />
+
 
       <Modal
         isOpen={isModalOpen}

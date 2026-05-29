@@ -3,6 +3,8 @@
   onChange: (value: string) => void;
 }*/
 
+import css from './SearchBox.module.css'
+
 type SearchBoxProps = {
   value: string;
   onChange: (value: string) => void;
@@ -13,7 +15,7 @@ const SearchBox = ({
   onChange,
 }: SearchBoxProps) => {
   return (
-    <input
+    <input className={css.input}
       type="text"
       value={value}
       placeholder="Search notes"

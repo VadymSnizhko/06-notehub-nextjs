@@ -1,3 +1,5 @@
+import css from './Pagination.module.css'
+
 type PaginationProps = {
   currentPage: number;
   totalPages: number;
@@ -10,7 +12,9 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps) => {
   return (
-    <div>
+    <div >
+      <ul className={css.pagination}>
+        <li>
       <button
         disabled={currentPage === 1}
         onClick={() =>
@@ -19,19 +23,21 @@ const Pagination = ({
       >
         Prev
       </button>
-
-      <span>
-        {currentPage} / {totalPages}
-      </span>
-
-      <button
+        </li>
+        <li>{currentPage}</li>
+        <li>...</li>
+        <li>{totalPages}</li>
+        <li><button
         disabled={currentPage === totalPages}
         onClick={() =>
           onPageChange(currentPage + 1)
         }
       >
         Next
-      </button>
+      </button></li>
+      </ul>
+
+      
     </div>
   );
 };
