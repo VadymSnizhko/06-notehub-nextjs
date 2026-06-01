@@ -96,19 +96,15 @@ const useDebounce = (
       <NoteList notes={data?.notes ?? []} />
 
 
+{isModalOpen && (
+  <Modal
+    isOpen={isModalOpen} // цей пропс можна залишити, якщо він потрібен самій модалці для анімації закриття
+    onClose={() => setIsModalOpen(false)}
+  >
+    <NoteForm onClose={() => setIsModalOpen(false)} />
+  </Modal>
+)}
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() =>
-          setIsModalOpen(false)
-        }
-      >
-        <NoteForm
-          onClose={() =>
-          setIsModalOpen(false)
-        }
-      />
-      </Modal>
     </>
   )
 }
