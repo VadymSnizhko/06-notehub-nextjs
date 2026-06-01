@@ -1,6 +1,5 @@
 'use client'
 
-//import {ErrorPageProps} from "@/types/note"
 interface ErrorPageProps{
     error:Error    
 }
