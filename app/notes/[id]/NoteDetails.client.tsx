@@ -29,7 +29,7 @@ const NoteDetailsClient = () => {
 	        </div>
             <p className={css.tag}>{note.tag}</p>
             <p className={css.content}>{note.content }</p>
-            <p className={css.date}>{note.createdAt}</p>
+            <p className={css.date}>{(note.createdAt).toString().slice(0,10)}</p>
 	    </div>
     </div>      
     )

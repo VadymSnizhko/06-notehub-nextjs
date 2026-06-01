@@ -78,11 +78,13 @@ const useDebounce = (
           onChange={setSearch}
         />
 
+      {data && data?.totalPages > 1 &&(
       <Pagination
         currentPage={page}
-        totalPages={data?.totalPages ?? 1}
+        totalPages={data?.totalPages  ?? 1}
         onPageChange={setPage}
       />
+      )}
 
         <button className={css.button}
           onClick={() => setIsModalOpen(true)}

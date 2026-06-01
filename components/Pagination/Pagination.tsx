@@ -1,4 +1,6 @@
 import css from './Pagination.module.css'
+import { FaChevronLeft, FaChevronRight  } from "react-icons/fa6";
+//import ReactPaginate from 'react-paginate';
 
 type PaginationProps = {
   currentPage: number;
@@ -12,29 +14,35 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps) => {
   return (
+
     <div >
       <ul className={css.pagination}>
         <li>
-      <button
-        disabled={currentPage === 1}
-        onClick={() =>
+      <a
+        data-disabled={currentPage === 1}
+        onClick={() =>{
+          if (currentPage === 1) return
           onPageChange(currentPage - 1)
         }
-      >
-        Prev
-      </button>
-        </li>
-        <li>{currentPage}</li>
-        <li>...</li>
-        <li>{totalPages}</li>
-        <li><button
-        disabled={currentPage === totalPages}
-        onClick={() =>
-          onPageChange(currentPage + 1)
         }
       >
-        Next
-      </button></li>
+        <FaChevronLeft size={18}/>
+      </a>
+        </li>
+        <li><a>{currentPage}</a></li>
+        <li><a> ...</a></li>
+        <li><a>{totalPages}</a></li>
+        <li><a
+        data-disabled={currentPage === totalPages}
+        onClick={() => {
+          if (currentPage === totalPages) return
+          onPageChange(currentPage + 1)
+        }
+          
+        }
+      >
+        <FaChevronRight size={18} />
+      </a></li>
       </ul>
 
       
