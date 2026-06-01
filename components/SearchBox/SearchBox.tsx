@@ -5,7 +5,7 @@
 
 import css from './SearchBox.module.css'
 
-type SearchBoxProps = {
+interface SearchBoxProps {
   value: string;
   onChange: (value: string) => void;
 };
