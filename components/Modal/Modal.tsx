@@ -1,6 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import css from './Modal.module.css';
+import { RiCloseLargeLine } from "react-icons/ri";
 
 interface ModalProps {
   isOpen: boolean;
@@ -42,9 +43,12 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
       <div className={css.modal}>
-        <button onClick={onClose} className={css.closeButton}>
-          Close
-        </button>
+        <div className={css.btnclose}>
+          <button className={css.btn} onClick={onClose}>
+            <RiCloseLargeLine size={18}/>
+          </button>          
+        </div>
+ 
         {children}
       </div>
     </div>,
