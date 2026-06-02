@@ -5,7 +5,7 @@ import css from './Pagination.module.css';
 interface PaginationProps {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
+  onPageChange: (selectedItem: { selected: number }) => void;
 }
 
 const Pagination = ({
@@ -14,18 +14,14 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps) => {
   
-  const handlePageClick = (event: { selected: number }) => {
-    onPageChange(event.selected + 1);
-  };
-
   return (
     <div className={css.paginationWrapper}> 
       <ReactPaginate
         pageCount={totalPages}
         pageRangeDisplayed={5} 
         marginPagesDisplayed={1} 
-        onPageChange={handlePageClick}
-        forcePage={currentPage - 1}
+        onPageChange={onPageChange}
+        forcePage={currentPage}
         
         previousLabel={<FaChevronLeft size={18} />}
         nextLabel={<FaChevronRight size={18} />}

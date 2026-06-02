@@ -18,9 +18,10 @@ const NoteDetailsClient = () => {
 
   if (error || !note) return <p>Some error..</p>;
 
-  const formattedDate = note.updatedAt
-    ? `Updated at: ${note.updatedAt}`
-    : `Created at: ${note.createdAt}`
+  const rawDate = note.updatedAt || note.createdAt;
+  //const label = note.updatedAt ? "Updated at" : "Created at";
+
+  const formattedDate = `${new Date(rawDate).toLocaleString()}`
     return (
       <div className={css.container}>
 	    <div className={css.item}>
@@ -29,7 +30,7 @@ const NoteDetailsClient = () => {
 	        </div>
             <p className={css.tag}>{note.tag}</p>
             <p className={css.content}>{note.content }</p>
-            <p className={css.date}>{(note.createdAt).toString().slice(0,10)}</p>
+            <p className={css.date}>{formattedDate}</p>
 	    </div>
     </div>      
     )

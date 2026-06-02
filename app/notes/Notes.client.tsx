@@ -80,9 +80,9 @@ const useDebounce = (
 
       {data && data?.totalPages > 1 &&(
       <Pagination
-        currentPage={page}
-        totalPages={data?.totalPages  ?? 1}
-        onPageChange={setPage}
+        currentPage={page - 1}
+        totalPages={data.totalPages}
+        onPageChange={({ selected }) => setPage(selected + 1)}
       />
       )}
 
