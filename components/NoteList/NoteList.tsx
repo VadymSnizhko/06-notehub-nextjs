@@ -43,7 +43,7 @@ const NoteList = ({ notes }: NoteListProps) => {
             {}
             <button 
               className={css.button}
-              disabled={mutation.isPending} спам-кліків
+              disabled={mutation.isPending}
               onClick={() => {
                 if (confirm("Ви впевнені, що хочете видалити цю нотатку?")) {
                   mutation.mutate(note.id);
